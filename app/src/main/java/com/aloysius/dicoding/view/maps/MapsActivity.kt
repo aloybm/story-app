@@ -3,8 +3,11 @@ package com.aloysius.dicoding.view.maps
 import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -80,8 +83,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         } else {
             requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         }
+        setupView()
     }
-
+    private fun setupView() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+        supportActionBar?.hide()
+    }
     private fun observeMapsData() {
         lifecycleScope.launchWhenStarted {
             mapsViewModel.mapsData.observe(this@MapsActivity) { result ->
