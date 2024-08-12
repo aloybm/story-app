@@ -15,8 +15,7 @@ App to share and discover stories from every users.
 - Icon and motion animation
 
 ## Screenshots
-![image](https://github.com/aloybm/story-app/assets/100351038/02e570c0-35e7-4589-92e6-b534019cf3ae)
-
+![image](https://github.com/user-attachments/assets/588daa8e-5167-4048-b908-0d30da35a5ef)
 
 ## Getting Started 
 - Clone this repository
